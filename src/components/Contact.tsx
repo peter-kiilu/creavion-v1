@@ -8,7 +8,6 @@ const Contact: React.FC = () => {
       <div className="bg-gradient-to-br from-indigo-900 to-slate-900 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="p-10 sm:p-14 text-white flex flex-col justify-between relative overflow-hidden">
-            {/* Background decoration */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/20 rounded-full blur-[60px] -translate-y-1/2 translate-x-1/2"></div>
             
             <div>
@@ -42,7 +41,6 @@ const Contact: React.FC = () => {
             
             <div className="mt-12">
                <div className="flex gap-4">
-                  {/* Social placeholders */}
                   <div className="w-10 h-10 bg-white/5 rounded-full hover:bg-cyan-500 transition cursor-pointer"></div>
                   <div className="w-10 h-10 bg-white/5 rounded-full hover:bg-cyan-500 transition cursor-pointer"></div>
                </div>

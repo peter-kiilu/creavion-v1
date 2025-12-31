@@ -1,4 +1,8 @@
 import { Monitor, Video, PenTool, BarChart, Image } from 'lucide-react';
+import project1 from '../assets/project1.jpg';
+import project2 from '../assets/project2.jpg';
+import project3 from '../assets/project3.jpg';
+import project4 from '../assets/project4.jpg';
 
 export const COMPANY_INFO = {
   name: "Creavion Media",
@@ -61,4 +65,36 @@ export const PACKAGES = [
 
 export const TOOLS = [
   "Adobe Photoshop", "Adobe Premiere Pro", "Adobe After Effects", "WonderShare Filmora", "CorelDraw"
+];
+
+// --- PORTFOLIO DATA ---
+export const PORTFOLIO_PROJECTS = [
+  {
+    id: 1,
+    title: "Brand Awareness Campaign",
+    category: "Social Media Management",
+    image: project1, // References the imported image
+    description: "Delivered creative digital content aligned with brand identity."
+  },
+  {
+    id: 2,
+    title: "Product Launch Commercial",
+    category: "Video Editing",
+    image: project2,
+    description: "High-energy promotional edit featuring motion graphics and sound design."
+  },
+  {
+    id: 3,
+    title: "Summer Festival Posters",
+    category: "Graphic Design",
+    image: project3,
+    description: "Visually appealing poster series designed to capture audience attention."
+  },
+  {
+    id: 4,
+    title: "Instagram Reels Series",
+    category: "Content Creation",
+    image: project4,
+    description: "Engaging short-form video content designed for maximum reach."
+  },
 ];

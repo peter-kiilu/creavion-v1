@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { Menu, X, Download } from 'lucide-react';
 import { COMPANY_INFO } from '../constants';
+import logo from '../assets/logo.png'; 
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Function to handle scroll to top explicitly
   const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // The path to your file in the 'public' folder
   const cvPath = "/cv.pdf"; 
 
   return (
@@ -19,25 +18,26 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           
-          {/* Logo Section - Clickable */}
           <div className="flex-shrink-0 flex items-center">
             <a 
               href="#" 
               onClick={scrollToTop} 
-              className="flex items-center gap-2 group cursor-pointer"
+              className="flex items-center gap-3 group cursor-pointer"
               aria-label="Back to Home"
             >
-              {/* Logo Icon with Hover Glow */}
-              <div className="h-8 w-8 bg-gradient-to-tr from-indigo-500 to-cyan-500 rounded-lg shadow-lg shadow-indigo-500/20 group-hover:shadow-indigo-500/50 group-hover:scale-105 transition-all duration-300"></div> 
+  
+              <img 
+                src={logo} 
+                alt={`${COMPANY_INFO.name} Logo`}
+                className="h-10 w-auto object-contain rounded-lg group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-indigo-500/20 transition-all duration-300"
+              />
               
-              {/* Company Name with Hover Color Change */}
               <span className="font-bold text-xl tracking-tight text-white group-hover:text-indigo-100 transition-colors">
                 {COMPANY_INFO.name}
               </span>
             </a>
           </div>
           
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {['Services', 'Work', 'Packages', 'Contact'].map((item) => (
               <a 
@@ -49,10 +49,9 @@ const Header: React.FC = () => {
               </a>
             ))}
             
-            {/* DOWNLOAD BUTTON (Desktop) */}
             <a 
               href={cvPath}
-              download="Creavion_Media_CV.pdf" // The name the file will have when downloaded
+              download="Creavion_Media_CV.pdf" 
               className="bg-white text-slate-900 px-5 py-2.5 rounded-full font-bold flex items-center gap-2 hover:bg-indigo-50 transition-colors shadow-lg shadow-white/10 text-sm cursor-pointer"
             >
               <Download size={16} />
@@ -60,7 +59,6 @@ const Header: React.FC = () => {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button 
               onClick={() => setIsOpen(!isOpen)} 
@@ -72,7 +70,6 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isOpen && (
         <div className="md:hidden bg-slate-900 border-t border-slate-800 absolute w-full left-0 shadow-2xl">
           <div className="px-4 pt-4 pb-6 space-y-2">
@@ -87,7 +84,6 @@ const Header: React.FC = () => {
               </a>
             ))}
             
-            {/* DOWNLOAD BUTTON (Mobile) */}
             <a 
               href={cvPath}
               download="Creavion_Media_CV.pdf"
