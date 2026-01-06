@@ -1,12 +1,33 @@
-import React from 'react';
-import { ArrowRight, Play } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { ArrowRight, Play, Pause } from 'lucide-react';
 import { COMPANY_INFO } from '../constants';
 
-import heroImage from '../assets/hero.jpg'; 
+// Images and Video
+import heroVideo from '../assets/hero-video.mp4';
+import heroImage from '../assets/hero.jpg';
 
 const Hero: React.FC = () => {
+  // 1. State to track if video is playing
+  const [isPlaying, setIsPlaying] = useState(false);
+  
+  // 2. Reference to control the video element
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // 3. Function to toggle play/pause
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
     <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+      {/* Background Gradient Blob */}
       <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[100px] -z-10"></div>
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-cyan-600/10 rounded-full blur-[80px] -z-10"></div>
 
@@ -37,28 +58,41 @@ const Hero: React.FC = () => {
         </div>
 
         <div className="relative">
-          {/* Main Image Container */}
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-900 group">
+          {/* Main Container - Added onClick to toggle play anywhere on the video */}
+          <div 
+            className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-900 group cursor-pointer"
+            onClick={togglePlay}
+          >
             
-            {/* 2. THE IMAGE IS RENDERED HERE */}
-            <img 
-              src={heroImage} 
-              alt="Agency Workspace" 
-              className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" 
-            />
+            {/* VIDEO PLAYER */}
+            <video
+              ref={videoRef}
+              playsInline
+              // Removed autoPlay and muted so user controls it
+              poster={heroImage} 
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+              onEnded={() => setIsPlaying(false)} // Reset button when video ends
+            >
+              <source src={heroVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
             
-            {/* Dark Gradient Overlay (Makes text readable) */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-10"></div>
+            {/* Dark Overlay - Fades out when playing to see video clearly */}
+            <div className={`absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-10 transition-opacity duration-500 ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}></div>
 
-            {/* Optional Play Button (Centered) */}
-            <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:scale-110 transition">
-                    <Play size={32} className="text-white fill-white ml-1" />
+            {/* Play/Pause Button Logic */}
+            <div className={`absolute inset-0 flex items-center justify-center z-20 transition-all duration-300 ${isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}>
+                <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-xl group-hover:scale-110 transition hover:bg-white/20">
+                    {isPlaying ? (
+                      <Pause size={32} className="text-white fill-white" />
+                    ) : (
+                      <Play size={32} className="text-white fill-white ml-1" />
+                    )}
                 </div>
             </div>
             
-            {/* Floating Card (Positioned on top of the image) */}
-            <div className="absolute bottom-6 left-6 right-6 z-20 bg-slate-950/80 backdrop-blur-md border border-slate-700/50 p-4 rounded-xl flex items-center justify-between shadow-xl">
+            {/* Floating Card - Hides when playing to avoid obstruction */}
+            <div className={`absolute bottom-6 left-6 right-6 z-20 bg-slate-950/80 backdrop-blur-md border border-slate-700/50 p-4 rounded-xl flex items-center justify-between shadow-xl transition-opacity duration-500 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
               <div>
                 <p className="text-slate-200 font-bold">Creative Driven</p>
                 <p className="text-slate-400 text-xs">Strategy & Design</p>
