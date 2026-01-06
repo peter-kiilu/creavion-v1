@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Menu, X, Download } from 'lucide-react';
 import { COMPANY_INFO } from '../constants';
 import logo from '../assets/logo.png'; 
+import cv from '../assets/cv.pdf';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,9 +10,7 @@ const Header: React.FC = () => {
   const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const cvPath = "/cv.pdf"; 
+  }; 
 
   return (
     <nav className="fixed w-full bg-slate-950/80 backdrop-blur-md z-50 border-b border-slate-800">
@@ -50,7 +49,7 @@ const Header: React.FC = () => {
             ))}
             
             <a 
-              href={cvPath}
+              href={cv}
               download="Creavion_Media_CV.pdf" 
               className="bg-white text-slate-900 px-5 py-2.5 rounded-full font-bold flex items-center gap-2 hover:bg-indigo-50 transition-colors shadow-lg shadow-white/10 text-sm cursor-pointer"
             >
@@ -85,7 +84,7 @@ const Header: React.FC = () => {
             ))}
             
             <a 
-              href={cvPath}
+              href={cv}
               download="Creavion_Media_CV.pdf"
               className="w-full mt-4 bg-indigo-600 text-white px-3 py-3 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-indigo-500 transition-colors cursor-pointer"
             >
