@@ -43,24 +43,29 @@ export const SERVICES = [
 export const PACKAGES = [
   {
     title: "Social Media Management",
-    price: "$400 - $600/mo",
+    price: "$400 - $600/month",
     features: ["20+ Posts/month", "6-12 Reels", "Community Management", "Monthly Report", "Full Platform Management"],
   },
   {
     title: "Promo Video & Ads",
-    price: "$50 - $150",
+    price: "$90 - $150/video",
     features: ["Standard Promo (20-30s)", "Full Commercial (45-60s)", "Motion Graphics", "Brand-focused storytelling"],
   },
   {
     title: "Video Editing",
-    price: "$50 - $150",
+    price: "$100 - $150/video",
     features: ["YouTube Editing", "Podcast Editing", "Color Grading", "Advanced Motion Graphics"],
   },
   {
     title: "Branding Kit",
-    price: "$60 - $100",
+    price: "$60 - $100/kit",
     features: ["Custom Logo", "Color Palette", "Typography System", "Social Media Templates"],
   },
+{
+  title: "Digital Marketing",
+  price: "$350 - $600/month",
+  features: ["Multiplatform ads (FB+IG+TIKTOK+YOUTUBE)", "A/B testing and optimization", "Detailed performance report"]
+}
 ];
 
 export const TOOLS = [

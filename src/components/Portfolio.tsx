@@ -9,13 +9,10 @@ const Portfolio: React.FC = () => {
           <div>
             <span className="text-cyan-400 font-bold tracking-wider text-sm uppercase">Portfolio</span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mt-2">Selected Work</h2>
-            <p className="text-slate-400 mt-2 max-w-xl">
-              [cite_start]A selection of our creative work across social media, promotional design, and video content[cite: 62].
-            </p>
           </div>
-          <button className="text-white border-b border-indigo-500 pb-1 hover:text-indigo-400 transition">
+          <a href="https://drive.google.com/drive/folders/1-THPdS5R0CqNLLog4HRypkexvvU1KzHd?usp=drive_link" className="text-white border-b border-indigo-500 pb-1 hover:text-indigo-400 transition">
             View All Projects
-          </button>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
