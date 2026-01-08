@@ -79,27 +79,31 @@ export const PORTFOLIO_PROJECTS = [
     title: "Brand Awareness Campaign",
     category: "Social Media Management",
     image: project1, // References the imported image
-    description: "Delivered creative digital content aligned with brand identity."
+    description: "Delivered creative digital content aligned with brand identity.",
+    videoUrl: "https://res.cloudinary.com/dwnjrsetp/video/upload/v1767866135/hero-video_mwnf8k.mp4"
   },
   {
     id: 2,
     title: "Product Launch Commercial",
     category: "Video Editing",
     image: project2,
-    description: "High-energy promotional edit featuring motion graphics and sound design."
+    description: "High-energy promotional edit featuring motion graphics and sound design.",
+    videoUrl: "https://res.cloudinary.com/dwnjrsetp/video/upload/v1767866135/hero-video_mwnf8k.mp4"
   },
   {
     id: 3,
     title: "Summer Festival Posters",
     category: "Graphic Design",
     image: project3,
-    description: "Visually appealing poster series designed to capture audience attention."
+    description: "Visually appealing poster series designed to capture audience attention.",
+    videoUrl: "https://res.cloudinary.com/dwnjrsetp/video/upload/v1767866135/hero-video_mwnf8k.mp4"
   },
   {
     id: 4,
     title: "Instagram Reels Series",
     category: "Content Creation",
     image: project4,
-    description: "Engaging short-form video content designed for maximum reach."
+    description: "Engaging short-form video content designed for maximum reach.",
+    videoUrl: "https://res.cloudinary.com/dwnjrsetp/video/upload/v1767866135/hero-video_mwnf8k.mp4"
   },
 ];

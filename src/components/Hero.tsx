@@ -3,8 +3,10 @@ import { ArrowRight, Play, Pause } from 'lucide-react';
 import { COMPANY_INFO } from '../constants';
 
 // Images and Video
-import heroVideo from '../assets/hero-video.mp4';
 import heroImage from '../assets/hero.jpg';
+
+// Cloudinary video URL
+const heroVideo = 'https://res.cloudinary.com/dwnjrsetp/video/upload/v1767866135/hero-video_mwnf8k.mp4';
 
 const Hero: React.FC = () => {
   // 1. State to track if video is playing
@@ -31,8 +33,8 @@ const Hero: React.FC = () => {
       <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[100px] -z-10"></div>
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-cyan-600/10 rounded-full blur-[80px] -z-10"></div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div>
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+        <div className="lg:col-span-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6">
             <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
             {COMPANY_INFO.tagline}
@@ -57,10 +59,10 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative">
+        <div className="relative lg:col-span-3">
           {/* Main Container - Added onClick to toggle play anywhere on the video */}
           <div 
-            className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-900 group cursor-pointer"
+            className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-900 group cursor-pointer"
             onClick={togglePlay}
           >
             
@@ -70,8 +72,9 @@ const Hero: React.FC = () => {
               playsInline
               // Removed autoPlay and muted so user controls it
               poster={heroImage} 
-              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+              className="absolute inset-0 w-full h-full object-contain transition-opacity duration-300"
               onEnded={() => setIsPlaying(false)} // Reset button when video ends
+              style={{ width: '100%', height: '100%' }}
             >
               <source src={heroVideo} type="video/mp4" />
               Your browser does not support the video tag.

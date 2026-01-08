@@ -29,7 +29,15 @@ const Portfolio: React.FC = () => {
                 <span className="text-cyan-400 text-sm font-bold mb-2 uppercase tracking-wider">
                   {project.category}
                 </span>
-                <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+                <a 
+                  href={project.videoUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-2xl font-bold text-white hover:text-indigo-400 transition-colors"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {project.title}
+                </a>
                 <p className="text-slate-300 text-sm mt-2 line-clamp-2">
                   {project.description}
                 </p>
